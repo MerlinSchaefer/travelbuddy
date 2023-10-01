@@ -25,9 +25,11 @@ st.sidebar.header("Select Continent and Country")
 selected_continent = st.sidebar.selectbox(
     "Select a Continent", world_map["continent"].unique()
 )
-selected_country = st.sidebar.selectbox(
-    "Select a Country",
-    world_map[world_map["continent"] == selected_continent]["name"].tolist(),
+selected_country = (
+    st.sidebar.selectbox(  # TODO enable overwrite before prompt submission
+        "Select a Country",
+        world_map[world_map["continent"] == selected_continent]["name"].tolist(),
+    )
 )
 st.sidebar.header("Select travel modalities")
 selected_local_type = st.sidebar.selectbox(
