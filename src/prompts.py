@@ -1,4 +1,6 @@
-from typing import Dict
+from typing import Dict, Optional
+
+from langchain.prompts import PromptTemplate
 
 system_text_travel_agent = """You are a friendly travel planning assistant.
 Speak in a polite but informal tone.
@@ -74,3 +76,29 @@ def apply_input_modifiers(
             if value.lower() in modifier_key:
                 modified_data[key] = f"{value}{modifier_value}"
     return modified_data
+
+
+def create_initial_prompt_template(
+    user_prompt_text: str,
+    system_prompt_text: Optional[str] = None,
+    input_data: Dict[str, str] = None,
+) -> PromptTemplate:
+    """Create an initial formatted prompt template for a chat conversation,
+    with variable substitutions.
+
+    Args:
+        user_prompt_text (str): The user-specific prompt text to be included in the template.
+        system_prompt_text (str, optional): The system-specific prompt text (prefix) to be included in the template.
+            Defaults to None.
+        input_data (dict, optional): A dictionary containing variable substitutions for the template.
+            Defaults to None.
+
+    Returns:
+        PromptTemplate: A langchain prompt template with variables and template text.
+    """
+    initial_prompt = PromptTemplate(
+        input_variables=list(input_data.keys()),
+        template=f"{system_prompt_text}{user_prompt_text}",
+    )
+    initial_prompt = initial_prompt.format(**input_data)
+    return initial_prompt
