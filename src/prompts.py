@@ -15,9 +15,10 @@ additional things to consider
 You're goal is to provide an overview over the destination, including best travel times,
  list the best things to do and rough cost estimates,
 Then create a rough daily itinerary given the specifications.
+For the itinerary create a Markdown table with a column for the days and one for the activities.
 
 If you are unsure about any part of the answer indicate it clearly.
-Answer in German and use german currency if possible.
+Answer in German and use German currency if possible.
 """
 
 user_text_travel_prompt = """
@@ -51,7 +52,7 @@ sample_prompt_data = {
 
 prompt_input_modifiers = dict(
     roundtrip_modifier=" however not with too many single destinations allowing for a couple nights at each location.",
-    single_location_modifier=" however still allowing for daytrips further away and variability in locations.",
+    single_location_modifier=" however still allowing for daytrips further away and variability in locations",
     nature_modifier=" however cities are still welcome",
     city_modifier=" however nature is still welcome",
 )
