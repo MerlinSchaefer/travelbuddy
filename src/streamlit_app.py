@@ -100,8 +100,8 @@ if st.button("Submit"):
         system_prompt_text=system_text_travel_agent,
         input_data=modified_input,
     )
-    st.write("## Travel Request")
-    st.write(initial_prompt)
+    # st.write("## Travel Request")
+    # st.write(initial_prompt)
     # instantiate llm and conversation chain
     travel_chat = load_chat_LLM(openai_api_key=openai_api_key)
     conversation = ConversationChain(llm=travel_chat, verbose=True)

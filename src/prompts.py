@@ -15,9 +15,8 @@ additional things to consider
 You're goal is to provide an overview over the destination, including best travel times,
  list the best things to do and rough cost estimates,
 Then create a rough daily itinerary given the specifications.
-For the itinerary create a Markdown table with a column for the days and one for the activities.
+Format the itinerary to have one line per step.
 
-If you are unsure about any part of the answer indicate it clearly.
 Answer in German and use German currency if possible.
 """
 
